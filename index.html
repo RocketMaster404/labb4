@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="Script.js" defer></script>
+        <script src="linksScript.js" defer></script>
+        <script src="weatherApi.js" defer></script>
+        <script src="backgroundApi.js" defer></script>
+        <script src="pokemonApi.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <div class="header-box">
+                <p id="showDateTime">10:10</p>
+            </div>
+        </header>
+
+        <div class="bg-image"></div>
+
+        <section class="flexBox">
+            <h1 id="headline">Rubrik</h1>
+            <div class="boxContainer">
+                <div class="boxes" id="links-boxes">
+                    <h3>Snabblänkar</h3>
+                    <div class="boxInBox">
+                        <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBNqj_BACxuoGE7co2RFznug8f_xcjNR0Lng&s"
+                            alt="Bild på google logo"
+                        />
+                        <a href="https://www.google.com/">Google</a>
+                    </div>
+                    <div class="boxInBox">
+                        <img
+                            src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBUDu2rz06EjlN1L8I9rDKxNCFqtaMlSGUP7HME_3NO_IV_oo65qEDMhG0OONQl3Eh46hPAOwBr6X4jEKqiCHFgo-&format=source"
+                            alt="Bild på Notion logo"
+                        />
+                        <a href="https://www.notion.com/">Notion</a>
+                    </div>
+                    <div class="boxInBox">
+                        <img
+                            src="https://images.seeklogo.com/logo-png/46/2/chatgpt-logo-png_seeklogo-465219.png"
+                            alt="Bild på chatgtp logo"
+                        />
+                        <a href="https://chatgpt.com/">ChatGpt</a>
+                    </div>
+                    <div class="boxInBox">
+                        <img
+                            src="data:image/png;base64,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"
+                            alt="Bild på chatgtp logo"
+                        />
+                        <a href="https://www.hemnet.se/">Hemnet</a>
+                    </div>
+
+                    <button id="add-link" class="glass-btn">
+                        Lägg till länk
+                    </button>
+                </div>
+                <div class="boxes">
+                    <h3>Väder</h3>
+                    <div class="boxInBox weatherBox">
+                        <h3 class="weather-headerLine">Idag</h3>
+                        <div class="weather">
+                            <img id="weather-img-today" alt="Väderikon" />
+                            <p id="temp-today">Temeratur</p>
+                        </div>
+                    </div>
+                    <div class="boxInBox weatherBox">
+                        <h3 class="weather-headerLine">Imorgon</h3>
+                        <div class="weather">
+                            <img id="weather-img-tomorrow" alt="Väderikon" />
+                            <p id="temp-tomorrow">Temeratur</p>
+                        </div>
+                    </div>
+                    <div class="boxInBox weatherBox">
+                        <h3 class="weather-headerLine">Övermorgon</h3>
+                        <div class="weather">
+                            <img id="weather-img-thirdDay" alt="Väderikon" />
+                            <p id="temp-third">Temeratur</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="boxes" id="pokemon-box">
+                    <p id="score">Score: 0</p>
+                    <h3>Vem är!</h3>
+
+                    <img id="pokemon-img" />
+
+                    <input
+                        type="text"
+                        id="pokemon-input"
+                        placeholder="Skriv din gissning"
+                        class="glass-input"
+                    />
+
+                    <button id="guess-btn" class="glass-btn">Gissa</button>
+
+                    <p id="result-note"></p>
+                </div>
+                <div class="boxes">
+                    <h2>Anteckningar</h2>
+                    <textarea name="" id="notes"></textarea>
+                </div>
+            </div>
+        </section>
+        <section id="pop-up">
+            <p>Ange Rubrik</p>
+            <input
+                type="text"
+                placeholder="Rubrik.."
+                id="input-link-headline"
+            />
+            <p>Ange Länk</p>
+            <input type="text" placeholder="Länk.." id="input-link" />
+            <button id="link-added">Lägg till</button>
+        </section>
+        <footer>
+            <button id="new-bg" class="glass-btn">Click me!</button>
+            <button id="clear-storage" class="glass-btn">Reset</button>
+        </footer>
+    </body>
+</html>
