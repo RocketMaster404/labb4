@@ -71,9 +71,9 @@ async function fetchWeatherData(lat, lon) {
 
 
 function getWeatherImage(code) {
-    if (code === 0) return "images/soligt.png";
-    if (code <= 3) return "images/molningt.png";
-    if (code <= 67) return "images/regn.png";
+    if (code === 0) return "images/Soligt.png";
+    if (code <= 3) return "images/Molningt.png";
+    if (code <= 67) return "images/Regn.png";
     return "images/halvklart-regn.png";
 }
 getLocation();
