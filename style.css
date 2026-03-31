@@ -51,6 +51,7 @@ header {
     backdrop-filter: blur(2px);
     border-top: 1px solid rgba(211, 211, 211, 0.701);
     border-left: 1px solid rgba(211, 211, 211, 0.701);
+    gap: 1rem;
 }
 
 .link-box img {
@@ -67,7 +68,7 @@ header {
     height: 100vh;
     width: 100vw;
 
-    background-image: url(Images/pexels-kelly-2876511.jpg); /* 🔥 lägg till */
+    /* background-image: url(Images/pexels-kelly-2876511.jpg);  */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -79,6 +80,7 @@ header {
 
 .boxes {
     width: 18rem;
+    /* max-height: 22rem; */
     max-height: 28rem;
     background: rgba(211, 211, 211, 0.468);
     border-radius: 1rem;
@@ -108,7 +110,7 @@ header {
     align-items: center;
     background: rgba(227, 221, 221, 0.728);
     border-radius: 20px;
-    min-height: 15%;
+    min-height: auto;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
@@ -119,9 +121,12 @@ header {
     align-items: center;
     margin: 0.4rem;
 }
+.weatherBox h3 {
+    margin: 0.2rem 0; /* 🔥 mycket mindre */
+}
 
 .boxInBox img {
-    height: 2rem;
+    height: 1.6rem;
     border-radius: 0.4rem;
     -webkit-border-radius: 0.4rem;
     -moz-border-radius: 0.4rem;
@@ -198,7 +203,13 @@ header {
 .weather {
     display: flex;
     align-items: center;
+    justify-content: center; /* 🔥 viktigt */
     gap: 0.5rem;
+    flex-wrap: wrap; /* 🔥 om det blir trångt */
+}
+.weather img {
+    display: block;
+    max-width: 100%;
 }
 
 .glass-btn {

@@ -1,22 +1,34 @@
 // TID
 function updateDateTime() {
+    
     const now = new Date();
 
-    const hours = String(now.getHours()).padStart(2, "0");
-    const minutes = String(now.getMinutes()).padStart(2, "0");
+    
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
 
-    const timeString = `${hours}:${minutes}`;
+    
+    if (hours < 10) {
+        hours = "0" + hours;
+    }
 
-    const options = { day: "numeric", month: "long", year: "numeric" };
-    const dateString = now.toLocaleDateString("sv-SE", options);
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
 
-    const fullString = `${timeString}  ${dateString}`;
+    
+    const timeString = hours + ":" + minutes;
 
-    document.getElementById("showDateTime").textContent = fullString;
+   
+    const dateString = now.toLocaleDateString("sv-SE");
+
+    
+    document.getElementById("time").textContent = timeString;
+    document.getElementById("date").textContent = dateString;
 }
 
-updateDateTime();
 
+updateDateTime();
 setInterval(updateDateTime, 1000);
 
 // HEADLINE
@@ -34,8 +46,6 @@ headLine.addEventListener("input", () => {
     localStorage.setItem("headline", headLine.textContent);
 });
 
-
-
 // Notes
 
 const note = document.getElementById("notes");
@@ -50,5 +60,3 @@ note.addEventListener("input", () => {
 });
 
 console.log(note);
-
-
