@@ -1,10 +1,7 @@
 const backgroundButton = document.getElementById("new-bg");
 
-backgroundButton.addEventListener("click", getBackgroundImage);
+backgroundButton.addEventListener("click", fetchBackgroundData);
 
-function getBackgroundImage() {
-    fetchBackgroundData();
-}
 
 async function fetchBackgroundData() {
     try {
@@ -38,4 +35,4 @@ function setBackgroundImage(element, url) {
     element.style.backgroundPosition = "center";
 }
 fetchBackgroundData();
-console.log(response.status);
+

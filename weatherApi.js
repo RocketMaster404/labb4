@@ -29,13 +29,16 @@ function error(err) {
 }
 
 async function fetchWeatherData(lat, lon) {
-    console.log("hämta väderData körs , vörden:", lat, lon);
+    console.log("hämta väderData körs , värden:", lat, lon);
 
     try {
-        const tempToday = document.getElementById("temp-today");
-        const tempTomorrow = document.getElementById("temp-tomorrow");
-        const tempThird = document.getElementById("temp-third");
-        console.log(tempToday, tempTomorrow, tempThird);
+        const tempElements = [
+            document.getElementById("temp-today"),
+            document.getElementById("temp-tomorrow"),
+            document.getElementById("temp-third"),
+        ];
+
+        const imgElements = [imgToday, imgTomorrow, imgThird];
 
         const response = await fetch(
             `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,weathercode&timezone=auto`,
@@ -46,28 +49,25 @@ async function fetchWeatherData(lat, lon) {
         }
 
         const data = await response.json();
-        const weatherCodes = data.daily.weathercode;
         console.log(data);
 
-        const todayTemp = data.daily.temperature_2m_max[0];
-        const tomorrowTemp = data.daily.temperature_2m_max[1];
-        const thirdTemp = data.daily.temperature_2m_max[2];
+        const temps = data.daily.temperature_2m_max;
+        const weatherCodes = data.daily.weathercode;
 
-        console.log("Temperaturer:", todayTemp, tomorrowTemp, thirdTemp);
+        
+        for (let i = 0; i < 3; i++) {
+            const temp = temps[i];
+            const code = weatherCodes[i];
 
-        tempToday.textContent = todayTemp + " Grader";
-        tempTomorrow.textContent = tomorrowTemp + " Grader";
-        tempThird.textContent = thirdTemp + " Grader";
-
-        imgToday.src = getWeatherImage(weatherCodes[0]);
-        imgTomorrow.src = getWeatherImage(weatherCodes[1]);
-        imgThird.src = getWeatherImage(weatherCodes[2]);
-
-        console.log(tempToday);
+            tempElements[i].textContent = temp + " Grader";
+            imgElements[i].src = getWeatherImage(code);
+        }
     } catch (error) {
         console.log("Error:", error);
     }
 }
+
+
 
 function getWeatherImage(code) {
     if (code === 0) return "images/sun.png";
