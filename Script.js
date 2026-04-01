@@ -1,13 +1,10 @@
 // TID
 function updateDateTime() {
-    
     const now = new Date();
 
-    
     let hours = now.getHours();
     let minutes = now.getMinutes();
 
-    
     if (hours < 10) {
         hours = "0" + hours;
     }
@@ -16,17 +13,19 @@ function updateDateTime() {
         minutes = "0" + minutes;
     }
 
-    
     const timeString = hours + ":" + minutes;
 
-   
-    const dateString = now.toLocaleDateString("sv-SE");
-
     
+
+    const dateString = now.toLocaleDateString("sv-SE", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+    });
+
     document.getElementById("time").textContent = timeString;
     document.getElementById("date").textContent = dateString;
 }
-
 
 updateDateTime();
 setInterval(updateDateTime, 1000);

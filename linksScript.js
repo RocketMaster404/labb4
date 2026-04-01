@@ -93,5 +93,5 @@ const clearBtn = document.getElementById("clear-storage");
 
 clearBtn.addEventListener("click", () => {
     localStorage.clear();
-    location.reload(); // 🔥 uppdaterar sidan direkt
+    location.reload();
 });
